@@ -14,6 +14,9 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	<Grid>
+		<TextBlock HorizontalAlignment="Center" FontWeight="Heavy" FontSize="30">Badges Scan</TextBlock>
+		<Button Name="ScanSimulation" Click="ScanSimulation_Click" Content="Click" HorizontalAlignment="Center"/>
+	</Grid>
 
 </Window>
