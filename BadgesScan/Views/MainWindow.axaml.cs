@@ -7,6 +7,8 @@ using ReactiveUI;
 using System;
 using System.Drawing;
 using System.Globalization;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Markup;
@@ -18,6 +20,9 @@ namespace BadgesScan.Views
         public DateTime newOddScan { get; set; }
         bool isOddScan = true;
 
+        string apiUri = "https://157.26.121.123:7236/api/TimeWorks";
+        HttpClient client;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -25,8 +30,10 @@ namespace BadgesScan.Views
             CultureInfo ci = new CultureInfo("en-GB");
             string date = DateTime.Now.ToString("dddd, dd MMMM yyyy", ci);
             Date.Content = char.ToUpper(date[0]) + date.Substring(1);
-
+            
             TimeElapsed.IsVisible = false;
+
+            client = new HttpClient();
         }
 
         public async void ScanSimulation_Click(object sender, RoutedEventArgs e)
@@ -38,8 +45,10 @@ namespace BadgesScan.Views
                 TimeElapsed.IsVisible = false;
                 newOddScan = DateTime.Now;
                 ScanTime.Content = "Scan Time : " + newOddScan.ToString("HH:mm:ss");
-                
-                await Task.Delay(2500);
+
+                await client.PostAsJsonAsync(apiUri, newOddScan);
+
+                //await Task.Delay(2500);
 
             } else
             {
@@ -48,8 +57,10 @@ namespace BadgesScan.Views
                 ScanTime.Content = "Scan Time : " + newEvenScan.ToString("HH:mm:ss");
                 TimeSpan timeElapsed = newEvenScan - newOddScan;
                 TimeElapsed.Content = "Time Elapsed : " + $"{timeElapsed:hh\\:mm\\:ss}";
-               
-                await Task.Delay(4000);
+
+                await client.PostAsJsonAsync(apiUri, newEvenScan);
+
+                //await Task.Delay(4000);
             }
             isOddScan = !isOddScan;
             ScanTime.Content = "Time of the scan";
