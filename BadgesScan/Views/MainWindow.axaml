@@ -17,17 +17,23 @@
 	<Grid>
 		<TextBlock HorizontalAlignment="Center" FontWeight="Heavy" FontSize="30">Badges Scan</TextBlock>
 		<Label Name="Date" FontSize="50" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"
-			   Margin="0, 100, 0, 0"></Label>
+			   Margin="0, 50, 0, 0"></Label>
 		<Button Name="ScanSimulation" Click="ScanSimulation_Click" Content="Scan your Badge" HorizontalAlignment="Center"
 				Height="100" FontSize="25" FontWeight="Bold" Margin="0, 100, 400, 0" VerticalContentAlignment="Center"/>
-		<Label Name="ScanTime" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 100, 100, 100"
-			FontSize="30" FontWeight="Bold" Background="#EBEBEB" Width="400" HorizontalContentAlignment="Center">
+
+		<Label Name="UserName" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0, 0, 200, 0" FontSize="20" FontWeight="Bold">
+			User Name
+		</Label>
+		<Label Name="ScanTime" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 250, 50, 100"
+			FontSize="20" FontWeight="Bold" Background="#EBEBEB" Width="400" HorizontalContentAlignment="Center">
 			Time of the scan
 		</Label>
-		<Label Name="TimeElapsed" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 200, 100, 0"
-			FontSize="30" FontWeight="Bold" Background="#EBEBEB" Width="400" HorizontalContentAlignment="Center">
+		<Label Name="TimeElapsed" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 250, 50, 0"
+			FontSize="20" FontWeight="Bold" Background="#EBEBEB" Width="400" HorizontalContentAlignment="Center">
 			Time Elapsed
 		</Label>
+		<Label Name="GreenScreen" Background="#5DFA3C" Opacity="0.5"></Label>
+		<Image Name="ScanSuccess" VerticalAlignment="Center" HorizontalAlignment="Center" Source="D:\Ceff\Pratique\BadgesScan\BadgesScan\Assets\checked.png" Height="150"></Image>
 	</Grid>
 
 </Window>
